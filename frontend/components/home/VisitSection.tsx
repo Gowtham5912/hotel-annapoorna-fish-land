@@ -29,13 +29,13 @@ const infoCards = [
   {
     icon: Star,
     title: "Rating",
-    value: "4.2 / 5",
+    value: "4.8 / 5",
     subtext: "Based on public reviews",
   },
   {
     icon: IndianRupee,
     title: "Price Range",
-    value: "₹200 – ₹400",
+    value: "₹120 – ₹380",
     subtext: "Approximate dining range",
   },
 ];
@@ -68,8 +68,8 @@ export default function VisitSection() {
         <div>
           <SectionHeading
             eyebrow="Visit us"
-            title="A seafood stop worth finding while you’re in Chikkamagaluru"
-            description="Whether someone is exploring Chikkamagaluru or just looking for a reliable seafood meal, this section should make it easy to find Annapoorna Fish Land, understand the timings, and decide quickly."
+            title="Plan your visit to Annapoorna Fish Land"
+            description="Whether you're exploring Chikkamagaluru or simply craving comforting coastal flavours, find our location, timings, and everything you need for a relaxed visit."
           />
 
           <div className="mt-10 space-y-5">
@@ -84,10 +84,11 @@ export default function VisitSection() {
                     Why stop here
                   </h3>
                   <p className="mt-2 text-sm leading-7 text-slate-300/80">
-                    The positioning of this website should feel like more than a
-                    basic restaurant listing. It should tell tourists and locals
-                    that this is a dependable seafood stop in Chikkamagaluru —
-                    good for fish meals, fry, and a casual dine-in experience.
+                    Annapoorna Fish Land is a welcoming stop in Chikkamagaluru
+                    for anyone craving comforting coastal flavours. From homely
+                    fish meals and crisp fish fry to a relaxed family dining
+                    atmosphere, it offers the kind of seafood experience that
+                    feels simple, satisfying, and worth coming back for.
                   </p>
                 </div>
               </div>
@@ -95,15 +96,15 @@ export default function VisitSection() {
 
             <div className="rounded-[1.75rem] border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
               <h3 className="text-lg font-semibold text-white">
-                Suggested next improvement
+                What makes us special
               </h3>
 
-              <ul className="mt-4 space-y-3 text-sm text-slate-300/80">
-                <li>• Add the restaurant’s confirmed phone number</li>
-                <li>• Add a real Google Maps direction link</li>
-                <li>• Add 2–3 real signature dishes from the hotel menu</li>
-                <li>• Add actual food / ambience photos later</li>
-              </ul>
+              <p className="mt-2 text-sm leading-7 text-slate-300/80">
+                Rooted in coastal flavours and served in the calm of
+                Chikkamagaluru, Annapoorna Fish Land brings together fresh
+                seafood, comforting homely cooking, and a warm dining space
+                where every meal feels familiar, flavourful, and made with care.
+              </p>
             </div>
           </div>
         </div>
@@ -158,48 +159,72 @@ export default function VisitSection() {
             </div>
 
             {/* Action buttons */}
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
               <PrimaryButton href="https://www.google.com/maps/dir/?api=1&destination=Hotel+Annapoorna+Fish+Land,+Barlane+Rd,+Pension+Mohalla,+Chikkamagaluru,+Karnataka+577101">
-               Get Directions
-               </PrimaryButton>
-              <PrimaryButton href="#visit" variant="secondary">
-                Call Restaurant
+                Get Directions
               </PrimaryButton>
+
+              <div className="group relative">
+                <button
+                  type="button"
+                  className="inline-flex w-full items-center justify-center rounded-full border border-white/15 bg-white/8 px-6 py-3 text-sm font-medium text-white backdrop-blur-md transition hover:bg-white/12 sm:w-auto"
+                >
+                  Call Restaurant
+                </button>
+
+                {/* Hover dropdown */}
+                <div className="pointer-events-none absolute left-0 top-full z-30 mt-3 w-72 translate-y-2 rounded-2xl border border-white/10 bg-[#0b1f29]/95 p-3 opacity-0 shadow-2xl backdrop-blur-xl transition duration-300 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100">
+                  <p className="px-2 pb-2 text-xs font-medium uppercase tracking-[0.22em] text-emerald-200/70">
+                    Contact Numbers
+                  </p>
+
+                  <div className="space-y-2">
+                    <a
+                      href="tel:+917019753697"
+                      className="flex items-center justify-between rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-slate-200 transition hover:bg-white/10 hover:text-white"
+                    >
+                      <span>+91 70197 53697</span>
+                      <Phone className="h-4 w-4 text-cyan-200" />
+                    </a>
+
+                    <a
+                      href="tel:+917892012242"
+                      className="flex items-center justify-between rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-slate-200 transition hover:bg-white/10 hover:text-white"
+                    >
+                      <span>+91 78920 12242</span>
+                      <Phone className="h-4 w-4 text-cyan-200" />
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            {/* Location summary card */}
+            {/* Must-Try compact card */}
             <div className="mt-8 overflow-hidden rounded-[1.75rem] border border-white/10 bg-[linear-gradient(180deg,#0a2430_0%,#123641_100%)] p-6">
               <div className="flex items-start gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-slate-950/30 text-cyan-200 shadow-lg">
-                  <MapPin className="h-6 w-6" />
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-slate-950/30 text-cyan-200 shadow-lg">
+                  <Star className="h-6 w-6" />
                 </div>
 
-                <div>
-                  <h4 className="text-lg font-semibold text-white">
-                    Barlane Rd, Pension Mohalla
+                <div className="flex-1">
+                  <p className="text-sm uppercase tracking-[0.22em] text-emerald-200/70">
+                    Must-Try at Annapoorna
+                  </p>
+
+                  <h4 className="mt-2 text-lg font-semibold text-white">
+                    Fish Meals, Fish Fry, and coastal favourites served with a
+                    homely touch
                   </h4>
+
                   <p className="mt-2 text-sm leading-7 text-slate-300/80">
-                    Chikkamagaluru, Karnataka 577101. This gives the page a
-                    proper location anchor instead of a generic placeholder.
-                    Later we can replace the buttons above with a real Google
-                    Maps link and a working phone call action.
+                    Enjoy comforting fish meals, crisp fry, and coastal classics
+                    like kori rotti and neer dose — simple, flavourful food that
+                    feels close to home-cooked seafood.
                   </p>
                 </div>
               </div>
             </div>
           </div>
-
-          {/* Floating accent badge */}
-          <motion.div
-            animate={{ y: [0, -10, 0] }}
-            transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-            className="absolute -bottom-6 -left-4 rounded-2xl border border-white/10 bg-slate-950/70 px-5 py-4 shadow-xl backdrop-blur-xl"
-          >
-            <p className="text-sm font-semibold text-white">Tourist-friendly</p>
-            <p className="text-xs text-emerald-200/75">
-              Fish meals • Chikkamagaluru stop • casual dine-in
-            </p>
-          </motion.div>
         </div>
       </div>
     </section>

@@ -47,9 +47,9 @@ export default function Footer() {
             </div>
 
             <p className="mt-5 text-sm leading-7 text-slate-300/75">
-              Fresh seafood dining in Chikkamagaluru with a coastal feel,
-              destination-friendly ambience, and a website built to help
-              travellers discover the restaurant quickly.
+              Enjoy homely coastal seafood in the heart of Chikkamagaluru, with
+              comforting fish meals, warm family dining, and flavours that bring
+              the taste of the coast to the hills.
             </p>
 
             <div className="mt-5">
@@ -118,9 +118,27 @@ export default function Footer() {
                   </p>
                 </div>
 
-                <div className="flex items-start gap-2">
-                  <Phone className="mt-0.5 h-4 w-4 shrink-0 text-cyan-200" />
-                  <p className="leading-6">Add confirmed phone number</p>
+                <div className="flex items-start gap-3">
+                  <Phone className="mt-1 h-4 w-4 shrink-0 text-cyan-200" />
+
+                  <ul className="space-y-1 text-sm text-slate-300/75">
+                    <li>
+                      <a
+                        href="tel:+917019753697"
+                        className="leading-6 transition hover:text-white"
+                      >
+                        +91 70197 53697
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="tel:+917892012242"
+                        className="leading-6 transition hover:text-white"
+                      >
+                        +91 78920 12242
+                      </a>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>

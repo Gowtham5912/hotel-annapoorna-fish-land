@@ -90,95 +90,91 @@ export default function StorySection({ isDarkMode }: StorySectionProps) {
           <SectionHeading
             eyebrow="Coast meets Malnad"
             title="Inspired by coastal seafood, grounded in Chikkamagaluru’s greenery"
-            description="We want the website to feel like two worlds coming together — the freshness of the sea and the calm, misty hills of Chikkamagaluru. This section is where the Malnad identity becomes stronger, with mountain silhouettes, greenery, and a softer, earthy atmosphere."
+            description="Experience a beautiful culinary convergence where the rich, vibrant flavors of the ocean meet the serene, mist-kissed hills of Chikkamagaluru. We bring the authentic spirit of coastal dining into the heart of Malnad’s lush greenery, creating a comforting destination stop for travelers and food lovers alike."
           />
 
           <div className="mt-10 grid gap-5 sm:grid-cols-2">
             <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-md">
               <h3 className="text-lg font-semibold text-white">
-                Malnad atmosphere
+                Elevated Mountain Comfort
               </h3>
               <p className="mt-2 text-sm leading-7 text-slate-300/80">
-                Misty hills, green valleys, cool evenings, and a calm travel
-                vibe — the visual mood should remind visitors of Chikkamagaluru
-                as much as the food reminds them of the coast.
+                Unwind in the cool, tranquil air of Chikkamagaluru. Surrounded by green valleys and a laid-back travel vibe, our space offers the perfect earthy, relaxed atmosphere to sit back, pause your journey, and savor a truly memorable meal.
               </p>
             </div>
 
             <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-md">
               <h3 className="text-lg font-semibold text-white">
-                Coastal flavour story
+                Authentic Ocean Flavors
               </h3>
               <p className="mt-2 text-sm leading-7 text-slate-300/80">
-                Fish meals, fry, prawns and comforting seafood dishes should
-                still stay at the centre of the experience, but framed with a
-                premium destination-dining feel.
+                At the heart of our kitchen is a passion for the sea. From our legendary signature fish meals and crispy tawa fries to perfectly spiced prawns, every dish delivers a premium, spice-infused taste of the coast right to your plate.
               </p>
             </div>
           </div>
         </div>
 
         {/* Right visual content card */}
-        <div className="relative">
-          <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur-xl">
-            {/* Glass glow */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(34,211,238,0.12),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(34,197,94,0.12),transparent_30%)]" />
+      <div className="relative">
+        <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur-xl">
+          {/* Glass glow */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(34,211,238,0.12),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(34,197,94,0.12),transparent_30%)]" />
 
-            <div className="relative z-10">
-              <p className="text-sm uppercase tracking-[0.24em] text-emerald-200/70">
-                Brand direction
-              </p>
+          <div className="relative z-10">
+            <p className="text-sm uppercase tracking-[0.24em] text-emerald-200/70">
+              Our story
+            </p>
 
-              <h3 className="mt-3 text-2xl font-semibold text-white md:text-3xl">
-                Ocean energy below, mountain calm above
-              </h3>
+            <h3 className="mt-3 text-2xl font-semibold text-white md:text-3xl">
+              Coastal roots, homely flavours, served in the heart of Chikkamagaluru
+            </h3>
 
-              <p className="mt-4 text-sm leading-8 text-slate-300/85 md:text-base">
-                The homepage can transition from an animated ocean hero into a
-                Chikkamagaluru story section like this one. Later we can add a
-                featured dishes section between them so the page flows:
-                <span className="block mt-3 text-emerald-200">
-                  Hero → Signature Dishes → Story / Mountains → Menu Preview →
-                  Gallery → Visit
-                </span>
-              </p>
+            <p className="mt-4 text-sm leading-8 text-slate-300/85 md:text-base">
+              Hotel Annapoorna Fish Land brings the comfort of coastal-style seafood
+              cooking to Chikkamagaluru. While the restaurant is located amidst the
+              greenery and calm of the hills, the soul of the food comes from the
+              flavours of the coast — simple, fresh, satisfying, and deeply homely.
+              Every meal is meant to feel less like restaurant food and more like a
+              plate served with the warmth of home.
+            </p>
 
-              <div className="mt-8 space-y-4">
-                <div className="rounded-2xl border border-emerald-300/10 bg-slate-950/25 p-4">
-                  <p className="text-sm font-medium text-white">
-                    Visual transition
-                  </p>
-                  <p className="mt-1 text-sm text-slate-300/80">
-                    Ocean blues gradually give way to forest greens and soft
-                    mountain mist.
-                  </p>
-                </div>
+            <div className="mt-8 space-y-4">
+              <div className="rounded-2xl border border-emerald-300/10 bg-slate-950/25 p-4">
+                <p className="text-sm font-medium text-white">
+                  Coastal-inspired homely meals
+                </p>
+                <p className="mt-1 text-sm text-slate-300/80">
+                  Fish meals, fry, and everyday favourites prepared in a style that
+                  feels comforting, familiar, and rooted in home-style cooking.
+                </p>
+              </div>
 
-                <div className="rounded-2xl border border-cyan-300/10 bg-slate-950/25 p-4">
-                  <p className="text-sm font-medium text-white">
-                    Tourist positioning
-                  </p>
-                  <p className="mt-1 text-sm text-slate-300/80">
-                    Not just a restaurant page — a destination page for people
-                    visiting Chikkamagaluru and looking for a seafood stop.
-                  </p>
-                </div>
+              <div className="rounded-2xl border border-cyan-300/10 bg-slate-950/25 p-4">
+                <p className="text-sm font-medium text-white">
+                  A seafood stop for travellers and locals
+                </p>
+                <p className="mt-1 text-sm text-slate-300/80">
+                  Whether you are exploring Chikkamagaluru or simply craving a proper
+                  fish meal, Annapoorna Fish Land is meant to be a welcoming stop for
+                  fresh seafood and satisfying homely food.
+                </p>
               </div>
             </div>
           </div>
-
-          {/* Floating small accent card */}
-          <motion.div
-            animate={{ y: [0, -10, 0] }}
-            transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-            className="absolute -bottom-6 -left-4 rounded-2xl border border-white/10 bg-slate-950/70 px-5 py-4 shadow-xl backdrop-blur-xl"
-          >
-            <p className="text-sm font-semibold text-white">Chikkamagaluru</p>
-            <p className="text-xs text-emerald-200/75">
-              Green hills • cool air • traveller energy
-            </p>
-          </motion.div>
         </div>
+
+        {/* Floating small accent card */}
+        <motion.div
+          animate={{ y: [0, -10, 0] }}
+          transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+          className="absolute -bottom-6 -left-4 rounded-2xl border border-white/10 bg-slate-950/70 px-5 py-4 shadow-xl backdrop-blur-xl"
+        >
+          <p className="text-sm font-semibold text-white">Coastal taste, hill-town comfort</p>
+          <p className="text-xs text-emerald-200/75">
+            Homely seafood • fresh flavours • Chikkamagaluru warmth
+          </p>
+        </motion.div>
+      </div>
       </div>
     </section>
   );

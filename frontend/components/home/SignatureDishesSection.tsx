@@ -62,7 +62,7 @@ export default function SignatureDishesSection() {
         <SectionHeading
           eyebrow="Signature dishes"
           title="Signature ocean catches crafted to define your food story."
-          description="Instead of a generic restaurant grid, this section should immediately tell visitors that Annapoorna Fish Land is a seafood destination. We’ll use these as featured homepage dishes for now, and later replace the text with your actual menu items."
+          description="From ocean waves straight to your plate, experience authentic coastal heritage. Indulge in legendary, spice-crusted tawa fish fries, rich and fiery ghee roasts, and the morning's freshest seafood catch cooked the traditional way."
           align="center"
         />
 
@@ -128,8 +128,6 @@ export default function SignatureDishesSection() {
                       <p className="text-sm font-medium text-cyan-200/90">
                         Featured seafood experience
                       </p>
-
-                      <div className="h-10 w-10 rounded-full border border-white/15 bg-white/10 backdrop-blur-sm" />
                     </div>
                   </div>
                 </div>
