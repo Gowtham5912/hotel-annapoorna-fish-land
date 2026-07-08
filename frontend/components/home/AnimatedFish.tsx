@@ -21,35 +21,62 @@ function FishSilhouette({ className = "" }: FishProps) {
 
 export default function AnimatedFish() {
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <div className="pointer-events-none absolute inset-0 overflow-hidden">
       {/* Fish 1 */}
       <motion.div
         initial={{ x: "-20vw", y: 0, opacity: 0 }}
-        animate={{ x: "120vw", y: [-10, 10, -6, 0], opacity: [0, 0.22, 0.22, 0] }}
-        transition={{ repeat: Infinity, duration: 22, ease: "linear", delay: 0 }}
-        className="absolute left-0 top-[42%] text-cyan-100/25"
+        animate={{
+          x: "120vw",
+          y: [-10, 10, -6, 0],
+          opacity: [0, 0.22, 0.22, 0],
+        }}
+        transition={{
+          repeat: Infinity,
+          duration: 22,
+          ease: "linear",
+          delay: 0,
+        }}
+        className="absolute left-0 top-[48%] text-cyan-100/25 sm:top-[44%] md:top-[42%]"
       >
-        <FishSilhouette className="h-12 w-24" />
+        <FishSilhouette className="h-8 w-16 -scale-x-100 sm:h-10 sm:w-20 md:h-12 md:w-24" />
       </motion.div>
 
       {/* Fish 2 */}
       <motion.div
-        initial={{ x: "110vw", y: 0, opacity: 0, scaleX: -1 }}
-        animate={{ x: "-20vw", y: [8, -10, 4, 0], opacity: [0, 0.16, 0.16, 0] }}
-        transition={{ repeat: Infinity, duration: 28, ease: "linear", delay: 3 }}
-        className="absolute right-0 top-[58%] text-emerald-100/20"
+        initial={{ x: "-25vw", y: 0, opacity: 0 }}
+        animate={{
+          x: "120vw",
+          y: [8, -10, 4, 0],
+          opacity: [0, 0.16, 0.16, 0],
+        }}
+        transition={{
+          repeat: Infinity,
+          duration: 28,
+          ease: "linear",
+          delay: 3,
+        }}
+        className="absolute left-0 top-[64%] text-emerald-100/20 sm:top-[60%] md:top-[58%]"
       >
-        <FishSilhouette className="h-10 w-20" />
+        <FishSilhouette className="h-7 w-14 -scale-x-100 sm:h-9 sm:w-18 md:h-10 md:w-20" />
       </motion.div>
 
       {/* Fish 3 */}
       <motion.div
         initial={{ x: "-15vw", y: 0, opacity: 0 }}
-        animate={{ x: "115vw", y: [0, -12, 10, 0], opacity: [0, 0.12, 0.12, 0] }}
-        transition={{ repeat: Infinity, duration: 32, ease: "linear", delay: 7 }}
-        className="absolute left-0 top-[68%] text-cyan-50/15"
+        animate={{
+          x: "115vw",
+          y: [0, -12, 10, 0],
+          opacity: [0, 0.12, 0.12, 0],
+        }}
+        transition={{
+          repeat: Infinity,
+          duration: 32,
+          ease: "linear",
+          delay: 7,
+        }}
+        className="absolute left-0 top-[76%] text-cyan-50/15 sm:top-[72%] md:top-[68%]"
       >
-        <FishSilhouette className="h-8 w-16" />
+        <FishSilhouette className="h-6 w-12 -scale-x-100 sm:h-7 sm:w-14 md:h-8 md:w-16" />
       </motion.div>
     </div>
   );

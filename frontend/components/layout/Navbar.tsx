@@ -36,16 +36,13 @@ export default function Navbar({
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      // Always show navbar near top
       if (currentScrollY < 40) {
         setShowNavbar(true);
       } else {
         if (currentScrollY > lastScrollY) {
-          // scrolling down
           setShowNavbar(false);
           setIsMobileMenuOpen(false);
         } else {
-          // scrolling up
           setShowNavbar(true);
         }
       }
@@ -73,8 +70,12 @@ export default function Navbar({
       <div className="mx-auto mt-4 w-[92%] max-w-7xl">
         {/* Main navbar */}
         <div className="flex items-center justify-between rounded-full border border-white/10 bg-slate-950/45 px-4 py-3 backdrop-blur-xl md:px-6">
-          {/* Left brand area */}
-          <div className="flex items-center gap-3">
+          {/* Left brand area - clickable */}
+          <a
+            href="#"
+            onClick={closeMenu}
+            className="flex items-center gap-3 transition-opacity hover:opacity-90"
+          >
             <div className="relative h-12 w-12 overflow-hidden rounded-full border border-cyan-300/20 bg-white/95 shadow-lg md:h-14 md:w-14">
               <Image
                 src="/logo.jpg"
@@ -93,7 +94,7 @@ export default function Navbar({
                 Chikkamagaluru
               </p>
             </div>
-          </div>
+          </a>
 
           {/* Desktop nav */}
           <nav className="hidden items-center gap-6 md:flex">

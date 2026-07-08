@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Camera, Fish, Mountain } from "lucide-react";
+import { useState } from "react";
 import SectionHeading from "@/components/ui/SectionHeading";
 
 const galleryCards = [
@@ -41,11 +42,128 @@ const galleryCards = [
   },
 ];
 
+type GalleryCardProps = {
+  card: (typeof galleryCards)[number];
+  large?: boolean;
+  delay?: number;
+};
+
+function GalleryCard({ card, large = false, delay = 0 }: GalleryCardProps) {
+  const [revealed, setRevealed] = useState(false);
+  const Icon = card.icon;
+
+  const wrapperHeights = large
+    ? "min-h-[360px] sm:min-h-[420px] lg:min-h-[460px]"
+    : "min-h-[240px] sm:min-h-[260px] lg:min-h-[220px]";
+
+  const iconSize = large
+    ? "h-12 w-12 sm:h-14 sm:w-14"
+    : "h-11 w-11 sm:h-12 sm:w-12";
+
+  const iconInner = large ? "h-6 w-6 sm:h-7 sm:w-7" : "h-5 w-5 sm:h-6 sm:w-6";
+
+  const titleClass = large
+    ? "text-2xl font-semibold text-white sm:text-3xl lg:text-4xl"
+    : "text-xl font-semibold text-white sm:text-2xl";
+
+  const paddingClass = large ? "p-6 sm:p-8 lg:p-10" : "p-5 sm:p-6 lg:p-8";
+
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 36 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.25 }}
+      transition={{ duration: 0.6, delay }}
+      whileHover={{ y: -8 }}
+      onClick={() => setRevealed((prev) => !prev)}
+      className={`group relative overflow-hidden rounded-[1.75rem] border border-white/10 shadow-xl md:rounded-[2rem] ${wrapperHeights} cursor-pointer`}
+    >
+      {/* image */}
+      <div className="absolute inset-0">
+        <Image
+          src={card.image}
+          alt={card.title}
+          fill
+          className="object-cover transition duration-700 group-hover:scale-105"
+        />
+      </div>
+
+      {/* dark base */}
+      <div
+        className={`absolute inset-0 transition duration-500 ${
+          revealed
+            ? "bg-slate-950/10"
+            : "bg-slate-950/40 group-hover:bg-slate-950/10"
+        }`}
+      />
+
+      {/* themed overlays */}
+      <div
+        className={`absolute inset-0 ${card.gradient} transition duration-500 ${
+          revealed ? "opacity-0" : "group-hover:opacity-0"
+        }`}
+      />
+      <div
+        className={`absolute inset-0 bg-gradient-to-br ${card.glow} transition duration-500 ${
+          revealed
+            ? "opacity-20"
+            : "opacity-65 group-hover:opacity-20"
+        }`}
+      />
+      <div
+        className={`absolute inset-0 bg-[linear-gradient(180deg,rgba(4,19,27,0.08)_0%,rgba(4,19,27,0.30)_40%,rgba(4,19,27,0.88)_100%)] transition duration-500 ${
+          revealed ? "opacity-20" : "group-hover:opacity-20"
+        }`}
+      />
+
+      {/* top highlight */}
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" />
+
+      {/* content */}
+      <div
+        className={`relative z-10 flex h-full flex-col justify-between ${paddingClass} transition duration-500 ${
+          revealed
+            ? "translate-y-3 opacity-0"
+            : "group-hover:translate-y-3 group-hover:opacity-0"
+        }`}
+      >
+        <div className="flex items-center justify-between gap-3">
+          <div
+            className={`flex ${iconSize} items-center justify-center rounded-2xl border border-white/10 bg-slate-950/40 text-cyan-200 shadow-lg backdrop-blur-md`}
+          >
+            <Icon className={iconInner} />
+          </div>
+
+          <span className="rounded-full border border-white/10 bg-slate-950/45 px-3 py-1 text-[11px] font-medium tracking-wide text-emerald-100/90 backdrop-blur-md sm:text-xs">
+            {card.label}
+          </span>
+        </div>
+
+        <div className={large ? "max-w-xl" : ""}>
+          <h3 className={titleClass}>{card.title}</h3>
+          <p
+            className={`mt-3 text-sm text-slate-100/85 sm:mt-4 ${
+              large ? "max-w-lg leading-7 sm:leading-8 md:text-base" : "leading-7"
+            }`}
+          >
+            {card.description}
+          </p>
+
+          {/* mobile hint */}
+          <p className="mt-4 text-xs text-slate-300/65 md:hidden">
+            Tap to view image clearly
+          </p>
+        </div>
+      </div>
+    </motion.article>
+  );
+}
+
 export default function GallerySection() {
   return (
     <section
       id="gallery"
-      className="relative overflow-hidden border-t border-white/5 bg-[#04131b] py-24 md:py-28"
+      className="relative overflow-hidden border-t border-white/5 bg-[#04131b] py-20 md:py-28"
     >
       {/* Background */}
       <div className="absolute inset-0 bg-[linear-gradient(180deg,#04131b_0%,#071c26_42%,#0a2326_100%)]" />
@@ -55,145 +173,36 @@ export default function GallerySection() {
       <motion.div
         animate={{ x: [0, 24, -12, 0], y: [0, -10, 8, 0] }}
         transition={{ repeat: Infinity, duration: 16, ease: "easeInOut" }}
-        className="absolute left-[-5%] top-16 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl"
+        className="absolute left-[-10%] top-12 h-56 w-56 rounded-full bg-cyan-400/10 blur-3xl sm:left-[-5%] sm:top-16 sm:h-72 sm:w-72"
       />
 
       <motion.div
         animate={{ x: [0, -20, 12, 0], y: [0, 10, -6, 0] }}
         transition={{ repeat: Infinity, duration: 18, ease: "easeInOut" }}
-        className="absolute right-[-5%] top-10 h-80 w-80 rounded-full bg-emerald-400/10 blur-3xl"
+        className="absolute right-[-10%] top-8 h-56 w-56 rounded-full bg-emerald-400/10 blur-3xl sm:right-[-5%] sm:top-10 sm:h-80 sm:w-80"
       />
 
       <div className="relative z-10 mx-auto w-[92%] max-w-7xl">
         <SectionHeading
           eyebrow="Gallery"
-          title="A visual experience section for food, ambience, and destination feel"
+          title="A glimpse of our food, dining space, and Chikkamagaluru surroundings"
           description="Enjoy comforting seafood dishes, a warm family-style dining atmosphere, and the Chikkamagaluru setting that makes every visit feel relaxed and memorable."
           align="center"
         />
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
+        <div className="mt-10 grid gap-5 lg:mt-14 lg:grid-cols-[1.15fr_0.85fr] lg:gap-6">
           {/* Large left card */}
-          <motion.article
-            initial={{ opacity: 0, y: 36 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.6 }}
-            whileHover={{ y: -8 }}
-            className="group relative min-h-[460px] overflow-hidden rounded-[2rem] border border-white/10 shadow-2xl"
-          >
-            {/* image */}
-            <div className="absolute inset-0">
-              <Image
-                src={galleryCards[0].image}
-                alt={galleryCards[0].title}
-                fill
-                className="object-cover transition duration-700 group-hover:scale-105"
-              />
-            </div>
-
-            {/* dark base */}
-            <div className="absolute inset-0 bg-slate-950/35 transition duration-500 group-hover:bg-slate-950/10" />
-
-            {/* themed overlay - fades on hover */}
-            <div
-              className={`absolute inset-0 ${galleryCards[0].gradient} transition duration-500 group-hover:opacity-0`}
-            />
-            <div
-              className={`absolute inset-0 bg-gradient-to-br ${galleryCards[0].glow} opacity-70 transition duration-500 group-hover:opacity-20`}
-            />
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,19,27,0.08)_0%,rgba(4,19,27,0.30)_40%,rgba(4,19,27,0.88)_100%)] transition duration-500 group-hover:opacity-20" />
-
-            {/* top highlight */}
-            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" />
-
-            {/* content */}
-            <div className="relative z-10 flex h-full flex-col justify-between p-8 md:p-10 transition duration-500 group-hover:translate-y-3 group-hover:opacity-0">
-              <div className="flex items-center justify-between">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-slate-950/40 text-cyan-200 shadow-lg backdrop-blur-md">
-                  <Mountain className="h-7 w-7" />
-                </div>
-
-                <span className="rounded-full border border-white/10 bg-slate-950/45 px-3 py-1 text-xs font-medium tracking-wide text-emerald-100/90 backdrop-blur-md">
-                  {galleryCards[0].label}
-                </span>
-              </div>
-
-              <div className="max-w-xl">
-                <h3 className="text-3xl font-semibold text-white md:text-4xl">
-                  {galleryCards[0].title}
-                </h3>
-                <p className="mt-4 max-w-lg text-sm leading-8 text-slate-100/85 md:text-base">
-                  {galleryCards[0].description}
-                </p>
-              </div>
-            </div>
-          </motion.article>
+          <GalleryCard card={galleryCards[0]} large />
 
           {/* Right stacked cards */}
-          <div className="grid gap-6">
-            {galleryCards.slice(1).map((card, index) => {
-              const Icon = card.icon;
-
-              return (
-                <motion.article
-                  key={card.title}
-                  initial={{ opacity: 0, y: 36 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.25 }}
-                  transition={{ duration: 0.6, delay: index * 0.12 }}
-                  whileHover={{ y: -8 }}
-                  className="group relative min-h-[220px] overflow-hidden rounded-[2rem] border border-white/10 shadow-xl"
-                >
-                  {/* image */}
-                  <div className="absolute inset-0">
-                    <Image
-                      src={card.image}
-                      alt={card.title}
-                      fill
-                      className="object-cover transition duration-700 group-hover:scale-105"
-                    />
-                  </div>
-
-                  {/* dark base */}
-                  <div className="absolute inset-0 bg-slate-950/40 transition duration-500 group-hover:bg-slate-950/10" />
-
-                  {/* themed overlays fade on hover */}
-                  <div
-                    className={`absolute inset-0 ${card.gradient} transition duration-500 group-hover:opacity-0`}
-                  />
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-br ${card.glow} opacity-65 transition duration-500 group-hover:opacity-20`}
-                  />
-                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,19,27,0.08)_0%,rgba(4,19,27,0.34)_42%,rgba(4,19,27,0.90)_100%)] transition duration-500 group-hover:opacity-20" />
-
-                  {/* top highlight */}
-                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" />
-
-                  {/* content */}
-                  <div className="relative z-10 flex h-full flex-col justify-between p-6 md:p-8 transition duration-500 group-hover:translate-y-3 group-hover:opacity-0">
-                    <div className="flex items-center justify-between">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-slate-950/40 text-cyan-200 shadow-lg backdrop-blur-md">
-                        <Icon className="h-6 w-6" />
-                      </div>
-
-                      <span className="rounded-full border border-white/10 bg-slate-950/45 px-3 py-1 text-xs font-medium tracking-wide text-emerald-100/90 backdrop-blur-md">
-                        {card.label}
-                      </span>
-                    </div>
-
-                    <div>
-                      <h3 className="text-2xl font-semibold text-white">
-                        {card.title}
-                      </h3>
-                      <p className="mt-3 text-sm leading-7 text-slate-100/85">
-                        {card.description}
-                      </p>
-                    </div>
-                  </div>
-                </motion.article>
-              );
-            })}
+          <div className="grid gap-5 lg:gap-6">
+            {galleryCards.slice(1).map((card, index) => (
+              <GalleryCard
+                key={card.title}
+                card={card}
+                delay={index * 0.12}
+              />
+            ))}
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   MapPin,
   Phone,
@@ -9,6 +10,7 @@ import {
   Mountain,
   Star,
   IndianRupee,
+  ChevronDown,
 } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import PrimaryButton from "@/components/ui/PrimaryButton";
@@ -40,7 +42,15 @@ const infoCards = [
   },
 ];
 
+const phoneNumbers = [
+  { label: "+91 81052 46344", href: "tel:+918105246344" },
+  { label: "+91 70197 53697", href: "tel:+917019753697" },
+  { label: "+91 78920 12242", href: "tel:+917892012242" },
+];
+
 export default function VisitSection() {
+  const [isCallOpen, setIsCallOpen] = useState(false);
+
   return (
     <section
       id="visit"
@@ -164,38 +174,56 @@ export default function VisitSection() {
                 Get Directions
               </PrimaryButton>
 
-              <div className="group relative">
+              <div
+                className="group relative"
+                onMouseEnter={() => {
+                  if (window.innerWidth >= 640) setIsCallOpen(true);
+                }}
+                onMouseLeave={() => {
+                  if (window.innerWidth >= 640) setIsCallOpen(false);
+                }}
+              >
                 <button
                   type="button"
-                  className="inline-flex w-full items-center justify-center rounded-full border border-white/15 bg-white/8 px-6 py-3 text-sm font-medium text-white backdrop-blur-md transition hover:bg-white/12 sm:w-auto"
+                  onClick={() => setIsCallOpen((prev) => !prev)}
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/15 bg-white/8 px-6 py-3 text-sm font-medium text-white backdrop-blur-md transition hover:bg-white/12 sm:w-auto"
                 >
-                  Call Restaurant
+                  <span>Call Restaurant</span>
+                  <ChevronDown
+                    className={`h-4 w-4 text-cyan-200 transition-transform duration-300 ${
+                      isCallOpen ? "rotate-180" : ""
+                    }`}
+                  />
                 </button>
 
-                {/* Hover dropdown */}
-                <div className="pointer-events-none absolute left-0 top-full z-30 mt-3 w-72 translate-y-2 rounded-2xl border border-white/10 bg-[#0b1f29]/95 p-3 opacity-0 shadow-2xl backdrop-blur-xl transition duration-300 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100">
-                  <p className="px-2 pb-2 text-xs font-medium uppercase tracking-[0.22em] text-emerald-200/70">
-                    Contact Numbers
-                  </p>
-
-                  <div className="space-y-2">
-                    <a
-                      href="tel:+917019753697"
-                      className="flex items-center justify-between rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-slate-200 transition hover:bg-white/10 hover:text-white"
+                <AnimatePresence>
+                  {isCallOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10, scale: 0.98 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 10, scale: 0.98 }}
+                      transition={{ duration: 0.22, ease: "easeOut" }}
+                      className="absolute left-0 top-full z-30 mt-3 w-72 rounded-2xl border border-white/10 bg-[#0b1f29]/95 p-3 shadow-2xl backdrop-blur-xl"
                     >
-                      <span>+91 70197 53697</span>
-                      <Phone className="h-4 w-4 text-cyan-200" />
-                    </a>
+                      <p className="px-2 pb-2 text-xs font-medium uppercase tracking-[0.22em] text-emerald-200/70">
+                        Contact Numbers
+                      </p>
 
-                    <a
-                      href="tel:+917892012242"
-                      className="flex items-center justify-between rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-slate-200 transition hover:bg-white/10 hover:text-white"
-                    >
-                      <span>+91 78920 12242</span>
-                      <Phone className="h-4 w-4 text-cyan-200" />
-                    </a>
-                  </div>
-                </div>
+                      <div className="space-y-2">
+                        {phoneNumbers.map((phone) => (
+                          <a
+                            key={phone.label}
+                            href={phone.href}
+                            className="flex items-center justify-between rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-slate-200 transition hover:bg-white/10 hover:text-white"
+                          >
+                            <span>{phone.label}</span>
+                            <Phone className="h-4 w-4 text-cyan-200" />
+                          </a>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             </div>
 

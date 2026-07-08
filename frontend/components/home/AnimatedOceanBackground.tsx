@@ -21,8 +21,8 @@ export default function AnimatedOceanBackground({
       <div
         className={`absolute inset-0 ${
           isDark
-            ? "bg-[linear-gradient(180deg,rgba(3,19,31,0)_0%,rgba(4,27,41,0.08)_38%,rgba(4,33,42,0.28)_60%,rgba(6,43,50,0.62)_100%)]"
-            : "bg-[linear-gradient(180deg,rgba(255,255,255,0)_0%,rgba(120,220,230,0.06)_40%,rgba(35,160,170,0.22)_62%,rgba(15,110,120,0.5)_100%)]"
+            ? "bg-[linear-gradient(180deg,rgba(3,19,31,0)_0%,rgba(4,27,41,0.06)_36%,rgba(4,33,42,0.24)_62%,rgba(6,43,50,0.68)_100%)] md:bg-[linear-gradient(180deg,rgba(3,19,31,0)_0%,rgba(4,27,41,0.08)_38%,rgba(4,33,42,0.28)_60%,rgba(6,43,50,0.62)_100%)]"
+            : "bg-[linear-gradient(180deg,rgba(255,255,255,0)_0%,rgba(120,220,230,0.05)_40%,rgba(35,160,170,0.18)_62%,rgba(15,110,120,0.52)_100%)] md:bg-[linear-gradient(180deg,rgba(255,255,255,0)_0%,rgba(120,220,230,0.06)_40%,rgba(35,160,170,0.22)_62%,rgba(15,110,120,0.5)_100%)]"
         }`}
       />
 
@@ -33,7 +33,7 @@ export default function AnimatedOceanBackground({
       <motion.div
         animate={{ x: ["0%", "-10%", "0%"] }}
         transition={{ repeat: Infinity, duration: 18, ease: "easeInOut" }}
-        className={`absolute bottom-40 left-[-15%] h-44 w-[130%] blur-xl ${
+        className={`absolute bottom-28 left-[-20%] h-24 w-[145%] blur-xl sm:bottom-32 sm:left-[-16%] sm:h-32 sm:w-[138%] md:bottom-40 md:left-[-15%] md:h-44 md:w-[130%] ${
           isDark ? "bg-cyan-400/10" : "bg-white/18"
         }`}
         style={{
@@ -46,7 +46,7 @@ export default function AnimatedOceanBackground({
       <motion.div
         animate={{ x: ["0%", "8%", "0%"], y: [0, -8, 0] }}
         transition={{ repeat: Infinity, duration: 12, ease: "easeInOut" }}
-        className={`absolute bottom-24 left-[-10%] h-52 w-[125%] blur-lg ${
+        className={`absolute bottom-16 left-[-16%] h-32 w-[138%] blur-lg sm:bottom-20 sm:left-[-12%] sm:h-40 sm:w-[130%] md:bottom-24 md:left-[-10%] md:h-52 md:w-[125%] ${
           isDark ? "bg-cyan-300/16" : "bg-cyan-50/28"
         }`}
         style={{
@@ -59,7 +59,7 @@ export default function AnimatedOceanBackground({
       <motion.div
         animate={{ x: ["0%", "-6%", "0%"], y: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 9, ease: "easeInOut" }}
-        className={`absolute bottom-[-10px] left-[-8%] h-64 w-[120%] blur-md ${
+        className={`absolute bottom-[-10px] left-[-12%] h-40 w-[132%] blur-md sm:left-[-10%] sm:h-48 sm:w-[126%] md:left-[-8%] md:h-64 md:w-[120%] ${
           isDark ? "bg-teal-300/22" : "bg-cyan-100/35"
         }`}
         style={{
@@ -72,17 +72,17 @@ export default function AnimatedOceanBackground({
       <motion.div
         animate={{
           x: ["-10%", "10%", "-10%"],
-          opacity: [0.15, 0.4, 0.15],
+          opacity: [0.12, 0.28, 0.12],
         }}
         transition={{ repeat: Infinity, duration: 8, ease: "easeInOut" }}
-        className="absolute bottom-28 left-0 h-24 w-full bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent)] blur-2xl"
+        className="absolute bottom-20 left-0 h-16 w-full bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.16),transparent)] blur-2xl sm:bottom-24 sm:h-20 md:bottom-28 md:h-24"
       />
 
       {/* Light reflection under sun */}
       <motion.div
-        animate={{ opacity: [0.18, 0.32, 0.18], scaleY: [1, 1.08, 1] }}
+        animate={{ opacity: [0.16, 0.28, 0.16], scaleY: [1, 1.08, 1] }}
         transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-        className={`absolute left-1/2 top-[32%] h-[42%] w-24 -translate-x-1/2 blur-3xl ${
+        className={`absolute left-1/2 top-[38%] h-[34%] w-14 -translate-x-1/2 blur-3xl sm:top-[35%] sm:h-[38%] sm:w-20 md:top-[32%] md:h-[42%] md:w-24 ${
           isDark ? "bg-orange-200/15" : "bg-yellow-100/35"
         }`}
       />
@@ -98,11 +98,11 @@ export default function AnimatedOceanBackground({
           return (
             <motion.span
               key={particle}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{
-                opacity: [0, 0.28, 0],
-                y: [40, -220],
-                x: [0, particle % 2 === 0 ? 10 : -10, 0],
+                opacity: [0, 0.24, 0],
+                y: [30, -140, -180],
+                x: [0, particle % 2 === 0 ? 8 : -8, 0],
               }}
               transition={{
                 repeat: Infinity,
