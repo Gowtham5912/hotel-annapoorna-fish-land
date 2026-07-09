@@ -7,6 +7,11 @@ export const metadata: Metadata = {
     "A seafood restaurant website inspired by ocean freshness and Chikkamagaluru greenery.",
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{

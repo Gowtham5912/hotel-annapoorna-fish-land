@@ -16,7 +16,7 @@ export default function PrimaryButton({
   variant = "primary",
 }: PrimaryButtonProps) {
   const baseStyles =
-    "inline-flex items-center justify-center rounded-full px-6 py-3 text-sm md:text-base font-semibold transition-all duration-300";
+    "inline-flex w-full items-center justify-center rounded-full px-6 py-3 text-center text-sm md:text-base font-semibold transition-all duration-300 sm:w-auto";
 
   const variants = {
     primary:
